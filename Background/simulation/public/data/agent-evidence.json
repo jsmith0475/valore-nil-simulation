@@ -1,0 +1,434 @@
+[
+  {
+    "programId": "auburn_mbb",
+    "evidence": [
+      {
+        "name": "Social Media",
+        "confidence": 0.78,
+        "color": "rgba(25,211,255,0.6)"
+      },
+      {
+        "name": "Performance",
+        "confidence": 0.82,
+        "color": "rgba(255,122,162,0.6)"
+      },
+      {
+        "name": "Market Intelligence",
+        "confidence": 0.75,
+        "color": "rgba(108,123,255,0.6)"
+      },
+      {
+        "name": "Brand Alignment",
+        "confidence": 0.74,
+        "color": "rgba(255,200,90,0.6)"
+      },
+      {
+        "name": "Psychology",
+        "confidence": 0.84,
+        "color": "rgba(120,255,190,0.6)"
+      },
+      {
+        "name": "Compliance",
+        "confidence": 0.88,
+        "color": "rgba(255,255,255,0.5)"
+      },
+      {
+        "name": "Ethics",
+        "confidence": 0.9,
+        "color": "rgba(180,140,255,0.6)"
+      }
+    ],
+    "consensus": {
+      "finalValue": 620000,
+      "rationale": [
+        "Parasocial and social identity indicators confirmed via psychology agent",
+        "RAG compliance backbone logs current NCAA/state guidance for auditability",
+        "Consensus engine balances market timing with ethics safeguards"
+      ]
+    }
+  },
+  {
+    "programId": "sacstate_mbb",
+    "evidence": [
+      {
+        "name": "Social Media",
+        "confidence": 0.72,
+        "color": "rgba(25,211,255,0.6)"
+      },
+      {
+        "name": "Performance",
+        "confidence": 0.69,
+        "color": "rgba(255,122,162,0.6)"
+      },
+      {
+        "name": "Market Intelligence",
+        "confidence": 0.74,
+        "color": "rgba(108,123,255,0.6)"
+      },
+      {
+        "name": "Brand Alignment",
+        "confidence": 0.71,
+        "color": "rgba(255,200,90,0.6)"
+      },
+      {
+        "name": "Psychology",
+        "confidence": 0.76,
+        "color": "rgba(120,255,190,0.6)"
+      },
+      {
+        "name": "Compliance",
+        "confidence": 0.82,
+        "color": "rgba(255,255,255,0.5)"
+      },
+      {
+        "name": "Ethics",
+        "confidence": 0.85,
+        "color": "rgba(180,140,255,0.6)"
+      }
+    ],
+    "consensus": {
+      "finalValue": 310000,
+      "rationale": [
+        "Parasocial and social identity indicators confirmed via psychology agent",
+        "RAG compliance backbone logs current NCAA/state guidance for auditability",
+        "Consensus engine balances market timing with ethics safeguards"
+      ]
+    }
+  },
+  {
+    "programId": "houston_mbb",
+    "evidence": [
+      {
+        "name": "Social Media",
+        "confidence": 0.81,
+        "color": "rgba(25,211,255,0.6)"
+      },
+      {
+        "name": "Performance",
+        "confidence": 0.86,
+        "color": "rgba(255,122,162,0.6)"
+      },
+      {
+        "name": "Market Intelligence",
+        "confidence": 0.78,
+        "color": "rgba(108,123,255,0.6)"
+      },
+      {
+        "name": "Brand Alignment",
+        "confidence": 0.8,
+        "color": "rgba(255,200,90,0.6)"
+      },
+      {
+        "name": "Psychology",
+        "confidence": 0.88,
+        "color": "rgba(120,255,190,0.6)"
+      },
+      {
+        "name": "Compliance",
+        "confidence": 0.75,
+        "color": "rgba(255,255,255,0.5)"
+      },
+      {
+        "name": "Ethics",
+        "confidence": 0.83,
+        "color": "rgba(180,140,255,0.6)"
+      }
+    ],
+    "consensus": {
+      "finalValue": 710000,
+      "rationale": [
+        "Parasocial and social identity indicators confirmed via psychology agent",
+        "RAG compliance backbone logs current NCAA/state guidance for auditability",
+        "Consensus engine balances market timing with ethics safeguards"
+      ]
+    }
+  },
+  {
+    "programId": "gonzaga_mbb",
+    "evidence": [
+      {
+        "name": "Social Media",
+        "confidence": 0.74,
+        "color": "rgba(25,211,255,0.6)"
+      },
+      {
+        "name": "Performance",
+        "confidence": 0.8,
+        "color": "rgba(255,122,162,0.6)"
+      },
+      {
+        "name": "Market Intelligence",
+        "confidence": 0.77,
+        "color": "rgba(108,123,255,0.6)"
+      },
+      {
+        "name": "Brand Alignment",
+        "confidence": 0.79,
+        "color": "rgba(255,200,90,0.6)"
+      },
+      {
+        "name": "Psychology",
+        "confidence": 0.75,
+        "color": "rgba(120,255,190,0.6)"
+      },
+      {
+        "name": "Compliance",
+        "confidence": 0.87,
+        "color": "rgba(255,255,255,0.5)"
+      },
+      {
+        "name": "Ethics",
+        "confidence": 0.88,
+        "color": "rgba(180,140,255,0.6)"
+      }
+    ],
+    "consensus": {
+      "finalValue": 540000,
+      "rationale": [
+        "Parasocial and social identity indicators confirmed via psychology agent",
+        "RAG compliance backbone logs current NCAA/state guidance for auditability",
+        "Consensus engine balances market timing with ethics safeguards"
+      ]
+    }
+  },
+  {
+    "programId": "kansas_mbb",
+    "evidence": [
+      {
+        "name": "Social Media",
+        "confidence": 0.83,
+        "color": "rgba(25,211,255,0.6)"
+      },
+      {
+        "name": "Performance",
+        "confidence": 0.88,
+        "color": "rgba(255,122,162,0.6)"
+      },
+      {
+        "name": "Market Intelligence",
+        "confidence": 0.85,
+        "color": "rgba(108,123,255,0.6)"
+      },
+      {
+        "name": "Brand Alignment",
+        "confidence": 0.82,
+        "color": "rgba(255,200,90,0.6)"
+      },
+      {
+        "name": "Psychology",
+        "confidence": 0.9,
+        "color": "rgba(120,255,190,0.6)"
+      },
+      {
+        "name": "Compliance",
+        "confidence": 0.89,
+        "color": "rgba(255,255,255,0.5)"
+      },
+      {
+        "name": "Ethics",
+        "confidence": 0.92,
+        "color": "rgba(180,140,255,0.6)"
+      }
+    ],
+    "consensus": {
+      "finalValue": 780000,
+      "rationale": [
+        "Parasocial and social identity indicators confirmed via psychology agent",
+        "RAG compliance backbone logs current NCAA/state guidance for auditability",
+        "Consensus engine balances market timing with ethics safeguards"
+      ]
+    }
+  },
+  {
+    "programId": "villanova_mbb",
+    "evidence": [
+      {
+        "name": "Social Media",
+        "confidence": 0.7,
+        "color": "rgba(25,211,255,0.6)"
+      },
+      {
+        "name": "Performance",
+        "confidence": 0.76,
+        "color": "rgba(255,122,162,0.6)"
+      },
+      {
+        "name": "Market Intelligence",
+        "confidence": 0.73,
+        "color": "rgba(108,123,255,0.6)"
+      },
+      {
+        "name": "Brand Alignment",
+        "confidence": 0.8,
+        "color": "rgba(255,200,90,0.6)"
+      },
+      {
+        "name": "Psychology",
+        "confidence": 0.78,
+        "color": "rgba(120,255,190,0.6)"
+      },
+      {
+        "name": "Compliance",
+        "confidence": 0.86,
+        "color": "rgba(255,255,255,0.5)"
+      },
+      {
+        "name": "Ethics",
+        "confidence": 0.88,
+        "color": "rgba(180,140,255,0.6)"
+      }
+    ],
+    "consensus": {
+      "finalValue": 480000,
+      "rationale": [
+        "Parasocial and social identity indicators confirmed via psychology agent",
+        "RAG compliance backbone logs current NCAA/state guidance for auditability",
+        "Consensus engine balances market timing with ethics safeguards"
+      ]
+    }
+  },
+  {
+    "programId": "southcarolina_wbb",
+    "evidence": [
+      {
+        "name": "Social Media",
+        "confidence": 0.9,
+        "color": "rgba(25,211,255,0.6)"
+      },
+      {
+        "name": "Performance",
+        "confidence": 0.92,
+        "color": "rgba(255,122,162,0.6)"
+      },
+      {
+        "name": "Market Intelligence",
+        "confidence": 0.86,
+        "color": "rgba(108,123,255,0.6)"
+      },
+      {
+        "name": "Brand Alignment",
+        "confidence": 0.84,
+        "color": "rgba(255,200,90,0.6)"
+      },
+      {
+        "name": "Psychology",
+        "confidence": 0.93,
+        "color": "rgba(120,255,190,0.6)"
+      },
+      {
+        "name": "Compliance",
+        "confidence": 0.88,
+        "color": "rgba(255,255,255,0.5)"
+      },
+      {
+        "name": "Ethics",
+        "confidence": 0.94,
+        "color": "rgba(180,140,255,0.6)"
+      }
+    ],
+    "consensus": {
+      "finalValue": 690000,
+      "rationale": [
+        "Parasocial and social identity indicators confirmed via psychology agent",
+        "RAG compliance backbone logs current NCAA/state guidance for auditability",
+        "Consensus engine balances market timing with ethics safeguards"
+      ]
+    }
+  },
+  {
+    "programId": "stanford_wbb",
+    "evidence": [
+      {
+        "name": "Social Media",
+        "confidence": 0.82,
+        "color": "rgba(25,211,255,0.6)"
+      },
+      {
+        "name": "Performance",
+        "confidence": 0.85,
+        "color": "rgba(255,122,162,0.6)"
+      },
+      {
+        "name": "Market Intelligence",
+        "confidence": 0.8,
+        "color": "rgba(108,123,255,0.6)"
+      },
+      {
+        "name": "Brand Alignment",
+        "confidence": 0.9,
+        "color": "rgba(255,200,90,0.6)"
+      },
+      {
+        "name": "Psychology",
+        "confidence": 0.88,
+        "color": "rgba(120,255,190,0.6)"
+      },
+      {
+        "name": "Compliance",
+        "confidence": 0.76,
+        "color": "rgba(255,255,255,0.5)"
+      },
+      {
+        "name": "Ethics",
+        "confidence": 0.9,
+        "color": "rgba(180,140,255,0.6)"
+      }
+    ],
+    "consensus": {
+      "finalValue": 560000,
+      "rationale": [
+        "Parasocial and social identity indicators confirmed via psychology agent",
+        "RAG compliance backbone logs current NCAA/state guidance for auditability",
+        "Consensus engine balances market timing with ethics safeguards"
+      ]
+    }
+  },
+  {
+    "programId": "louisville_wbb",
+    "evidence": [
+      {
+        "name": "Social Media",
+        "confidence": 0.76,
+        "color": "rgba(25,211,255,0.6)"
+      },
+      {
+        "name": "Performance",
+        "confidence": 0.8,
+        "color": "rgba(255,122,162,0.6)"
+      },
+      {
+        "name": "Market Intelligence",
+        "confidence": 0.74,
+        "color": "rgba(108,123,255,0.6)"
+      },
+      {
+        "name": "Brand Alignment",
+        "confidence": 0.82,
+        "color": "rgba(255,200,90,0.6)"
+      },
+      {
+        "name": "Psychology",
+        "confidence": 0.83,
+        "color": "rgba(120,255,190,0.6)"
+      },
+      {
+        "name": "Compliance",
+        "confidence": 0.85,
+        "color": "rgba(255,255,255,0.5)"
+      },
+      {
+        "name": "Ethics",
+        "confidence": 0.88,
+        "color": "rgba(180,140,255,0.6)"
+      }
+    ],
+    "consensus": {
+      "finalValue": 430000,
+      "rationale": [
+        "Parasocial and social identity indicators confirmed via psychology agent",
+        "RAG compliance backbone logs current NCAA/state guidance for auditability",
+        "Consensus engine balances market timing with ethics safeguards"
+      ]
+    }
+  }
+]

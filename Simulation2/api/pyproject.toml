@@ -1,0 +1,27 @@
+[tool.poetry]
+package-mode = false
+name = "valore-sim-api"
+version = "0.1.0"
+description = "VALORE NIL Simulation backend"
+authors = ["Simulation Team"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.112.0"
+uvicorn = {extras = ["standard"], version = "^0.30.0"}
+pydantic = "^2.8.0"
+openai = "^1.40.0"
+pydantic-settings = "^2.11.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.0"
+httpx = "^0.27.0"
+poethepoet = "^0.25.0"
+
+[tool.poe.tasks]
+serve = "uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+test = "pytest"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,119 @@
+[
+  {
+    "id": "auburn_guard",
+    "programId": "auburn_mbb",
+    "name": "Jalen Carter",
+    "classYear": "Sophomore",
+    "position": "Guard",
+    "archetype": "Playmaker",
+    "behaviorId": "auburn_guard_behavior",
+    "spotlights": [
+      { "type": "Highlight", "description": "Clutch three seals upset over rival." },
+      { "type": "Community", "description": "STEM tutoring for local middle schools." }
+    ]
+  },
+  {
+    "id": "sacstate_forward",
+    "programId": "sacstate_mbb",
+    "name": "Miguel Alvarez",
+    "classYear": "Junior",
+    "position": "Forward",
+    "archetype": "Connector",
+    "behaviorId": "sacstate_forward_behavior",
+    "spotlights": [
+      { "type": "Digital", "description": "Viral behind-the-scenes vlog series." },
+      { "type": "Community", "description": "Capitol mentorship program facilitator." }
+    ]
+  },
+  {
+    "id": "houston_guard",
+    "programId": "houston_mbb",
+    "name": "Marcus Reed",
+    "classYear": "Senior",
+    "position": "Guard",
+    "archetype": "Closer",
+    "behaviorId": "houston_guard_behavior",
+    "spotlights": [
+      { "type": "Highlight", "description": "Two-way defensive showcase on national TV." },
+      { "type": "Cause", "description": "Hurricane relief fundraising livestream." }
+    ]
+  },
+  {
+    "id": "gonzaga_center",
+    "programId": "gonzaga_mbb",
+    "name": "Leo Markovic",
+    "classYear": "Sophomore",
+    "position": "Center",
+    "archetype": "Anchor",
+    "behaviorId": "gonzaga_center_behavior",
+    "spotlights": [
+      { "type": "Highlight", "description": "Double-double streak sparks national attention." },
+      { "type": "Academic", "description": "Sports analytics podcast co-host." }
+    ]
+  },
+  {
+    "id": "kansas_wing",
+    "programId": "kansas_mbb",
+    "name": "Devon Ellis",
+    "classYear": "Freshman",
+    "position": "Wing",
+    "archetype": "Emergent Star",
+    "behaviorId": "kansas_wing_behavior",
+    "spotlights": [
+      { "type": "Digital", "description": "Interactive NIL journey series with fans." },
+      { "type": "Community", "description": "Youth camp aligned with Jayhawk alumni." }
+    ]
+  },
+  {
+    "id": "villanova_guard",
+    "programId": "villanova_mbb",
+    "name": "Chris Donnelly",
+    "classYear": "Senior",
+    "position": "Guard",
+    "archetype": "Mentor",
+    "behaviorId": "villanova_guard_behavior",
+    "spotlights": [
+      { "type": "Highlight", "description": "Game-winning set play breakdown with analyst." },
+      { "type": "Cause", "description": "Philly literacy partnership ambassador." }
+    ]
+  },
+  {
+    "id": "southcarolina_guard",
+    "programId": "southcarolina_wbb",
+    "name": "Amara Fields",
+    "classYear": "Junior",
+    "position": "Guard",
+    "archetype": "Catalyst",
+    "behaviorId": "southcarolina_guard_behavior",
+    "spotlights": [
+      { "type": "Highlight", "description": "Triple-double on national broadcast." },
+      { "type": "Advocacy", "description": "Equity in sports keynote at SEC summit." }
+    ]
+  },
+  {
+    "id": "stanford_forward",
+    "programId": "stanford_wbb",
+    "name": "Riley Chen",
+    "classYear": "Senior",
+    "position": "Forward",
+    "archetype": "Innovator",
+    "behaviorId": "stanford_forward_behavior",
+    "spotlights": [
+      { "type": "Innovation", "description": "Launches NIL-backed STEM scholarship." },
+      { "type": "Digital", "description": "Interactive wellness app with teammates." }
+    ]
+  },
+  {
+    "id": "louisville_guard",
+    "programId": "louisville_wbb",
+    "name": "Tiana Brooks",
+    "classYear": "Sophomore",
+    "position": "Guard",
+    "archetype": "Storyteller",
+    "behaviorId": "louisville_guard_behavior",
+    "spotlights": [
+      { "type": "Community", "description": "Derby City girls mentorship series." },
+      { "type": "Digital", "description": "Weekly docu-reel on athlete mental health." }
+    ]
+  }
+]

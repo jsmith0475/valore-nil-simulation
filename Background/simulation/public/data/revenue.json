@@ -1,0 +1,80 @@
+{
+  "phase1": [
+    {
+      "programId": "auburn_mbb",
+      "program": "Auburn Men's Basketball",
+      "licensing": 180000,
+      "subscription": 140000
+    },
+    {
+      "programId": "sacstate_mbb",
+      "program": "Sacramento State Men's Basketball",
+      "licensing": 120000,
+      "subscription": 90000
+    },
+    {
+      "programId": "houston_mbb",
+      "program": "Houston Men's Basketball",
+      "licensing": 200000,
+      "subscription": 150000
+    },
+    {
+      "programId": "gonzaga_mbb",
+      "program": "Gonzaga Men's Basketball",
+      "licensing": 175000,
+      "subscription": 130000
+    },
+    {
+      "programId": "kansas_mbb",
+      "program": "Kansas Men's Basketball",
+      "licensing": 210000,
+      "subscription": 160000
+    },
+    {
+      "programId": "villanova_mbb",
+      "program": "Villanova Men's Basketball",
+      "licensing": 160000,
+      "subscription": 120000
+    },
+    {
+      "programId": "southcarolina_wbb",
+      "program": "South Carolina Women's Basketball",
+      "licensing": 185000,
+      "subscription": 135000
+    },
+    {
+      "programId": "stanford_wbb",
+      "program": "Stanford Women's Basketball",
+      "licensing": 170000,
+      "subscription": 125000
+    },
+    {
+      "programId": "louisville_wbb",
+      "program": "Louisville Women's Basketball",
+      "licensing": 150000,
+      "subscription": 115000
+    }
+  ],
+  "phase2": {
+    "launch": 2025,
+    "targets": [
+      {
+        "program": "SEC Football Collective",
+        "highlight": "10x budget expansion"
+      },
+      {
+        "program": "Big Ten Football Pod",
+        "highlight": "Data network effect"
+      },
+      {
+        "program": "ACC Football Alliance",
+        "highlight": "Compliance automation demand"
+      }
+    ]
+  },
+  "impactMetrics": [
+    "90%+ valuation accuracy target within 20% of actual deals",
+    "98% demographic parity maintained through active bias monitoring",
+    "25% athlete earnings lift and 60% compliance cost reduction projected"
+  ]
+}

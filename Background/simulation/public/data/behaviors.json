@@ -1,0 +1,146 @@
+[
+  {
+    "id": "auburn_guard_behavior",
+    "parasocialStrength": 0.86,
+    "identityAlignment": 0.81,
+    "authenticitySignal": 0.88,
+    "networkMultiplier": 1.27,
+    "notes": [
+      "Weekly livestream Q&A maintains direct fan intimacy",
+      "Shared hometown roots with 40% of the local fanbase"
+    ],
+    "references": [
+      "Parasocial Relationship Theory \u2014 Horton & Wohl",
+      "Social Identity Theory \u2014 Tajfel & Turner",
+      "Authenticity in Branding \u2014 Beverland"
+    ]
+  },
+  {
+    "id": "sacstate_forward_behavior",
+    "parasocialStrength": 0.78,
+    "identityAlignment": 0.74,
+    "authenticitySignal": 0.82,
+    "networkMultiplier": 1.19,
+    "notes": [
+      "Vlog series drives sustained engagement across NorCal campuses",
+      "Bilingual outreach expands sponsor resonance"
+    ],
+    "references": [
+      "Parasocial Relationship Theory \u2014 Horton & Wohl",
+      "Social Identity Theory \u2014 Tajfel & Turner",
+      "Authenticity in Branding \u2014 Beverland"
+    ]
+  },
+  {
+    "id": "houston_guard_behavior",
+    "parasocialStrength": 0.84,
+    "identityAlignment": 0.79,
+    "authenticitySignal": 0.9,
+    "networkMultiplier": 1.31,
+    "notes": [
+      "Post-game analysis threads trend nationally",
+      "Disaster relief activism elevates trust metrics"
+    ],
+    "references": [
+      "Parasocial Relationship Theory \u2014 Horton & Wohl",
+      "Social Identity Theory \u2014 Tajfel & Turner",
+      "Authenticity in Branding \u2014 Beverland"
+    ]
+  },
+  {
+    "id": "gonzaga_center_behavior",
+    "parasocialStrength": 0.73,
+    "identityAlignment": 0.77,
+    "authenticitySignal": 0.8,
+    "networkMultiplier": 1.22,
+    "notes": [
+      "Global student audience taps into weekly analytics podcast",
+      "International heritage fosters expanded donor outreach"
+    ],
+    "references": [
+      "Parasocial Relationship Theory \u2014 Horton & Wohl",
+      "Social Identity Theory \u2014 Tajfel & Turner",
+      "Authenticity in Branding \u2014 Beverland"
+    ]
+  },
+  {
+    "id": "kansas_wing_behavior",
+    "parasocialStrength": 0.82,
+    "identityAlignment": 0.85,
+    "authenticitySignal": 0.87,
+    "networkMultiplier": 1.29,
+    "notes": [
+      "Interactive NIL journey polls create participatory fandom",
+      "Legacy families cite relatable upbringing"
+    ],
+    "references": [
+      "Parasocial Relationship Theory \u2014 Horton & Wohl",
+      "Social Identity Theory \u2014 Tajfel & Turner",
+      "Authenticity in Branding \u2014 Beverland"
+    ]
+  },
+  {
+    "id": "villanova_guard_behavior",
+    "parasocialStrength": 0.76,
+    "identityAlignment": 0.72,
+    "authenticitySignal": 0.83,
+    "networkMultiplier": 1.18,
+    "notes": [
+      "Podcast breakdowns reinforce basketball IQ perception",
+      "Literacy advocacy builds trust with parent demographics"
+    ],
+    "references": [
+      "Parasocial Relationship Theory \u2014 Horton & Wohl",
+      "Social Identity Theory \u2014 Tajfel & Turner",
+      "Authenticity in Branding \u2014 Beverland"
+    ]
+  },
+  {
+    "id": "southcarolina_guard_behavior",
+    "parasocialStrength": 0.89,
+    "identityAlignment": 0.87,
+    "authenticitySignal": 0.91,
+    "networkMultiplier": 1.33,
+    "notes": [
+      "Triple-double narratives trend across women's sports media",
+      "Equity keynote cements leadership positioning"
+    ],
+    "references": [
+      "Parasocial Relationship Theory \u2014 Horton & Wohl",
+      "Social Identity Theory \u2014 Tajfel & Turner",
+      "Authenticity in Branding \u2014 Beverland"
+    ]
+  },
+  {
+    "id": "stanford_forward_behavior",
+    "parasocialStrength": 0.8,
+    "identityAlignment": 0.83,
+    "authenticitySignal": 0.92,
+    "networkMultiplier": 1.26,
+    "notes": [
+      "STEM scholarship campaign deepens alumni pride",
+      "Wellness app fosters peer-to-peer community growth"
+    ],
+    "references": [
+      "Parasocial Relationship Theory \u2014 Horton & Wohl",
+      "Social Identity Theory \u2014 Tajfel & Turner",
+      "Authenticity in Branding \u2014 Beverland"
+    ]
+  },
+  {
+    "id": "louisville_guard_behavior",
+    "parasocialStrength": 0.77,
+    "identityAlignment": 0.82,
+    "authenticitySignal": 0.85,
+    "networkMultiplier": 1.21,
+    "notes": [
+      "Mentorship vignettes resonate with women-owned businesses",
+      "Mental health storytelling elevates authenticity perception"
+    ],
+    "references": [
+      "Parasocial Relationship Theory \u2014 Horton & Wohl",
+      "Social Identity Theory \u2014 Tajfel & Turner",
+      "Authenticity in Branding \u2014 Beverland"
+    ]
+  }
+]

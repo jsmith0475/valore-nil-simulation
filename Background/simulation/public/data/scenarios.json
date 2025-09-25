@@ -1,0 +1,74 @@
+[
+  {
+    "programId": "auburn_mbb",
+    "opponent": "Kentucky",
+    "lineup": ["auburn_guard", "kansas_wing", "houston_guard"],
+    "winProbability": 0.68,
+    "nilUplift": 0.14,
+    "fanSentiment": [0.62, 0.71, 0.75, 0.8, 0.84]
+  },
+  {
+    "programId": "sacstate_mbb",
+    "opponent": "Montana",
+    "lineup": ["sacstate_forward", "gonzaga_center", "villanova_guard"],
+    "winProbability": 0.58,
+    "nilUplift": 0.11,
+    "fanSentiment": [0.48, 0.55, 0.6, 0.66, 0.7]
+  },
+  {
+    "programId": "houston_mbb",
+    "opponent": "Baylor",
+    "lineup": ["houston_guard", "auburn_guard", "gonzaga_center"],
+    "winProbability": 0.72,
+    "nilUplift": 0.17,
+    "fanSentiment": [0.7, 0.76, 0.79, 0.83, 0.87]
+  },
+  {
+    "programId": "gonzaga_mbb",
+    "opponent": "Saint Mary's",
+    "lineup": ["gonzaga_center", "villanova_guard", "kansas_wing"],
+    "winProbability": 0.64,
+    "nilUplift": 0.12,
+    "fanSentiment": [0.58, 0.63, 0.68, 0.72, 0.76]
+  },
+  {
+    "programId": "kansas_mbb",
+    "opponent": "Duke",
+    "lineup": ["kansas_wing", "auburn_guard", "houston_guard"],
+    "winProbability": 0.7,
+    "nilUplift": 0.16,
+    "fanSentiment": [0.66, 0.74, 0.79, 0.85, 0.9]
+  },
+  {
+    "programId": "villanova_mbb",
+    "opponent": "Seton Hall",
+    "lineup": ["villanova_guard", "kansas_wing", "auburn_guard"],
+    "winProbability": 0.6,
+    "nilUplift": 0.1,
+    "fanSentiment": [0.54, 0.57, 0.62, 0.66, 0.7]
+  },
+  {
+    "programId": "southcarolina_wbb",
+    "opponent": "LSU",
+    "lineup": ["southcarolina_guard", "stanford_forward", "louisville_guard"],
+    "winProbability": 0.76,
+    "nilUplift": 0.19,
+    "fanSentiment": [0.74, 0.79, 0.83, 0.88, 0.92]
+  },
+  {
+    "programId": "stanford_wbb",
+    "opponent": "UCLA",
+    "lineup": ["stanford_forward", "southcarolina_guard", "louisville_guard"],
+    "winProbability": 0.69,
+    "nilUplift": 0.15,
+    "fanSentiment": [0.65, 0.7, 0.76, 0.81, 0.85]
+  },
+  {
+    "programId": "louisville_wbb",
+    "opponent": "Notre Dame",
+    "lineup": ["louisville_guard", "southcarolina_guard", "stanford_forward"],
+    "winProbability": 0.63,
+    "nilUplift": 0.13,
+    "fanSentiment": [0.59, 0.62, 0.67, 0.72, 0.77]
+  }
+]

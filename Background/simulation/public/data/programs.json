@@ -1,0 +1,164 @@
+[
+  {
+    "id": "auburn_mbb",
+    "name": "Auburn Men's Basketball",
+    "shortLabel": "Auburn (M)",
+    "conference": "SEC",
+    "fanReach": {
+      "localIndex": 0.78,
+      "nationalIndex": 0.62,
+      "composite": 0.73
+    },
+    "nilBaseline": 4200000,
+    "communityHighlights": [
+      "Auburn Family Network",
+      "Regional Sponsor Ecosystem"
+    ],
+    "narrative": "High-tempo contender drawing surging engagement from the Deep South fanbase.",
+    "phase": "Phase 1 Basketball POC"
+  },
+  {
+    "id": "sacstate_mbb",
+    "name": "Sacramento State Men's Basketball",
+    "shortLabel": "Sac State (M)",
+    "conference": "Big Sky",
+    "fanReach": {
+      "localIndex": 0.64,
+      "nationalIndex": 0.41,
+      "composite": 0.55
+    },
+    "nilBaseline": 1800000,
+    "communityHighlights": [
+      "Capitol Corporate Partners",
+      "NorCal Alumni Hub"
+    ],
+    "narrative": "Emerging West Coast program leveraging civic partnerships and tech-market alignment.",
+    "phase": "Phase 1 Basketball POC"
+  },
+  {
+    "id": "houston_mbb",
+    "name": "Houston Men's Basketball",
+    "shortLabel": "Houston (M)",
+    "conference": "Big 12",
+    "fanReach": {
+      "localIndex": 0.81,
+      "nationalIndex": 0.66,
+      "composite": 0.77
+    },
+    "nilBaseline": 4600000,
+    "communityHighlights": [
+      "Urban Sponsor Grid",
+      "Legacy NBA Pipeline"
+    ],
+    "narrative": "Blue-blood defense-first identity with urban market reach and NBA alumni gravity.",
+    "phase": "Phase 1 Basketball POC"
+  },
+  {
+    "id": "gonzaga_mbb",
+    "name": "Gonzaga Men's Basketball",
+    "shortLabel": "Gonzaga (M)",
+    "conference": "WCC",
+    "fanReach": {
+      "localIndex": 0.75,
+      "nationalIndex": 0.68,
+      "composite": 0.74
+    },
+    "nilBaseline": 4000000,
+    "communityHighlights": [
+      "National Mid-Major Loyalists",
+      "Pacific Northwest Corporate Ties"
+    ],
+    "narrative": "Consistent March contender with national neutral-site following and strong donor base.",
+    "phase": "Phase 1 Basketball POC"
+  },
+  {
+    "id": "kansas_mbb",
+    "name": "Kansas Men's Basketball",
+    "shortLabel": "Kansas (M)",
+    "conference": "Big 12",
+    "fanReach": {
+      "localIndex": 0.9,
+      "nationalIndex": 0.7,
+      "composite": 0.83
+    },
+    "nilBaseline": 5200000,
+    "communityHighlights": [
+      "Rock Chalk Collective",
+      "Historic Blueblood Market"
+    ],
+    "narrative": "Historic powerhouse with generational loyalty and nationwide alumni influence.",
+    "phase": "Phase 1 Basketball POC"
+  },
+  {
+    "id": "villanova_mbb",
+    "name": "Villanova Men's Basketball",
+    "shortLabel": "Villanova (M)",
+    "conference": "Big East",
+    "fanReach": {
+      "localIndex": 0.72,
+      "nationalIndex": 0.58,
+      "composite": 0.68
+    },
+    "nilBaseline": 3500000,
+    "communityHighlights": [
+      "Philly Main Line Network",
+      "Northeast Brand Portfolio"
+    ],
+    "narrative": "Championship pedigree program aligning with affluent Northeast markets.",
+    "phase": "Phase 1 Basketball POC"
+  },
+  {
+    "id": "southcarolina_wbb",
+    "name": "South Carolina Women's Basketball",
+    "shortLabel": "South Carolina (W)",
+    "conference": "SEC",
+    "fanReach": {
+      "localIndex": 0.88,
+      "nationalIndex": 0.69,
+      "composite": 0.81
+    },
+    "nilBaseline": 3800000,
+    "communityHighlights": [
+      "Women's Sports Leadership",
+      "Columbia Corporate Partners"
+    ],
+    "narrative": "Premier women's program driving national conversation on equity and excellence.",
+    "phase": "Phase 1 Basketball POC"
+  },
+  {
+    "id": "stanford_wbb",
+    "name": "Stanford Women's Basketball",
+    "shortLabel": "Stanford (W)",
+    "conference": "Pac-12",
+    "fanReach": {
+      "localIndex": 0.74,
+      "nationalIndex": 0.65,
+      "composite": 0.71
+    },
+    "nilBaseline": 3200000,
+    "communityHighlights": [
+      "Silicon Valley Innovation Partners",
+      "Academic Prestige"
+    ],
+    "narrative": "Innovation-forward program balancing elite academics with national title contention.",
+    "phase": "Phase 1 Basketball POC"
+  },
+  {
+    "id": "louisville_wbb",
+    "name": "Louisville Women's Basketball",
+    "shortLabel": "Louisville (W)",
+    "conference": "ACC",
+    "fanReach": {
+      "localIndex": 0.79,
+      "nationalIndex": 0.57,
+      "composite": 0.72
+    },
+    "nilBaseline": 3000000,
+    "communityHighlights": [
+      "Derby City Sponsor Belt",
+      "Women-Owned Business Coalition"
+    ],
+    "narrative": "Passionate community hub with multi-generational women's basketball support.",
+    "phase": "Phase 1 Basketball POC"
+  }
+]

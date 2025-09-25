@@ -1,0 +1,74 @@
+[
+  {
+    "athleteId": "auburn_guard",
+    "riskLevel": "Low",
+    "ruleUpdates": [
+      { "title": "NCAA 2024 Disclosure Update", "effective": "Jul 1, 2024" }
+    ],
+    "auditTrail": "Contract vetted with compliance on Sep 15, 2024"
+  },
+  {
+    "athleteId": "sacstate_forward",
+    "riskLevel": "Low",
+    "ruleUpdates": [
+      { "title": "California State NIL Amendment", "effective": "Aug 3, 2024" }
+    ],
+    "auditTrail": "Local sponsor agreement approved Aug 20, 2024"
+  },
+  {
+    "athleteId": "houston_guard",
+    "riskLevel": "Moderate",
+    "ruleUpdates": [
+      { "title": "Texas NIL Reporting Guidance", "effective": "Jun 12, 2024" }
+    ],
+    "auditTrail": "Trigger review scheduled pre-season 2024"
+  },
+  {
+    "athleteId": "gonzaga_center",
+    "riskLevel": "Low",
+    "ruleUpdates": [
+      { "title": "NCAA International Athlete Clarification", "effective": "May 5, 2024" }
+    ],
+    "auditTrail": "Visa-compliant marketing plan on file"
+  },
+  {
+    "athleteId": "kansas_wing",
+    "riskLevel": "Low",
+    "ruleUpdates": [
+      { "title": "Kansas NIL Education Requirement", "effective": "Jul 10, 2024" }
+    ],
+    "auditTrail": "Orientation completed Jul 18, 2024"
+  },
+  {
+    "athleteId": "villanova_guard",
+    "riskLevel": "Low",
+    "ruleUpdates": [
+      { "title": "Pennsylvania Collective Disclosure", "effective": "Jun 30, 2024" }
+    ],
+    "auditTrail": "Collective agreement logged Aug 2, 2024"
+  },
+  {
+    "athleteId": "southcarolina_guard",
+    "riskLevel": "Low",
+    "ruleUpdates": [
+      { "title": "SEC Postseason NIL Clarification", "effective": "Mar 9, 2024" }
+    ],
+    "auditTrail": "Compliance partner review Aug 25, 2024"
+  },
+  {
+    "athleteId": "stanford_forward",
+    "riskLevel": "Moderate",
+    "ruleUpdates": [
+      { "title": "California Institutional Support Guardrail", "effective": "Jan 15, 2024" }
+    ],
+    "auditTrail": "Institutional review scheduled Sep 28, 2024"
+  },
+  {
+    "athleteId": "louisville_guard",
+    "riskLevel": "Low",
+    "ruleUpdates": [
+      { "title": "Kentucky NIL Disclosure Update", "effective": "Jun 18, 2024" }
+    ],
+    "auditTrail": "All deals logged via RAG portal"
+  }
+]
