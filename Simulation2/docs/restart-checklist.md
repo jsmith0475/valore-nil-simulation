@@ -17,11 +17,11 @@ SIM_OPENAI_API_KEY=sk-...
 SIM_OPENAI_MODEL=gpt-5
 SIM_OPENAI_MAX_OUTPUT_TOKENS=1200
 SIM_OPENAI_REASONING_EFFORT=minimal
-SIM_DATA_MODE=simulation
+SIM_DATA_MODE=emulation
 SIM_SYNTHETIC_SEED=4242
 NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
 NEXT_PUBLIC_WS_URL=ws://localhost:8000/ws/agents
-NEXT_PUBLIC_DATA_MODE=simulation
+NEXT_PUBLIC_DATA_MODE=emulation
 ```
 
 Load them into your shell (`export $(grep -v '^#' .env | xargs)`) or rely on direnv.
@@ -53,12 +53,12 @@ Open `http://localhost:3000`. Confirm `NEXT_PUBLIC_*` variables point to the run
 
 ## 5. Smoke Test
 
-1. Toggle Simulation ↔ Emulation in the dashboard header.
+1. Confirm the header displays **Emulation** (toggle is disabled by design).
 2. Generate a narrative for at least one persona (Athletic Director, Coach, Compliance).
 3. Open **Agent Signals** tab; wait for pulse updates every ~15 s.
 4. Check **Live Feeds** tab; use “View Explainer →” link to confirm documentation page loads.
 5. Visit **Synthetic Data** tab for raw inputs and scenario highlights.
-6. (Optional) Hit `http://localhost:8000/health` and `/synthetic/overview?mode=emulation` in a browser or curl.
+6. (Optional) Hit `http://localhost:8000/health` and `/synthetic/overview` in a browser or curl.
 
 ## 6. Test Suite
 
@@ -80,7 +80,7 @@ Look for `7 passed` and ensure no new warnings beyond the known Pydantic config 
 | Issue | Fix |
 |-------|-----|
 | GPT responses empty | Increase `SIM_OPENAI_MAX_OUTPUT_TOKENS`; lower `SIM_OPENAI_REASONING_EFFORT`. |
-| Live Feeds static | Ensure emulation mode is active and backend logs show `type": "update"`. |
+| Live Feeds static | Ensure backend logs show `type": "update"` packets from the synthetic engine. |
 | WebSocket errors after closing tab | Restart backend (handled gracefully in latest build). |
 | `.env` not loading | Double-check export command or use `direnv allow`. |
 

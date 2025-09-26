@@ -39,7 +39,7 @@ def get_settings() -> Settings:
             except ValueError:
                 pass
     if not settings.data_mode:
-        settings.data_mode = os.getenv("SIM_DATA_MODE") or os.getenv("DATA_MODE")
+        settings.data_mode = os.getenv("SIM_DATA_MODE") or os.getenv("DATA_MODE") or "emulation"
     if settings.synthetic_seed is None:
         seed_value = os.getenv("SIM_SYNTHETIC_SEED") or os.getenv("SYNTHETIC_SEED")
         if seed_value:

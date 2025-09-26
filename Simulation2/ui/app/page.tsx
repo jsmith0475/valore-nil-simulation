@@ -1,7 +1,8 @@
 import { ExperienceDashboard } from '../components/ExperienceDashboard';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:8000';
-const DEFAULT_MODE = (process.env.NEXT_PUBLIC_DATA_MODE ?? 'simulation') as 'simulation' | 'emulation';
+const envMode = (process.env.NEXT_PUBLIC_DATA_MODE ?? 'emulation').toLowerCase();
+const DEFAULT_MODE = (envMode === 'simulation' ? 'simulation' : 'emulation') as 'simulation' | 'emulation';
 
 async function getPrograms(mode: string) {
   const response = await fetch(`${API_BASE}/programs/?mode=${mode}`, { cache: 'no-store' });

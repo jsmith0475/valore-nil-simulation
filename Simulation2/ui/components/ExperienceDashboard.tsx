@@ -60,6 +60,7 @@ type Props = {
 type DataMode = 'simulation' | 'emulation';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:8000';
+const SHOW_MODE_TOGGLE = false;
 
 type SyntheticUpdatePayload = {
   program_id: string;
@@ -341,7 +342,7 @@ function formatTimeAgo(timestamp: number): string {
   return `${Math.floor(diff / 86400)}d ago`;
 }
 
-export function ExperienceDashboard({ programs, scenarios, metrics, initialMode = 'simulation' }: Props) {
+export function ExperienceDashboard({ programs, scenarios, metrics, initialMode = 'emulation' }: Props) {
   const [persona, setPersona] = useState<PersonaKey>('athletic_director');
   const [dataMode, setDataMode] = useState<DataMode>(initialMode);
   const [modeLoading, setModeLoading] = useState(false);
@@ -1617,7 +1618,7 @@ export function ExperienceDashboard({ programs, scenarios, metrics, initialMode 
           </p>
           <div
             style={{
-              display: 'flex',
+              display: SHOW_MODE_TOGGLE ? 'flex' : 'none',
               gap: '.6rem',
               justifyContent: 'center',
               alignItems: 'center',
