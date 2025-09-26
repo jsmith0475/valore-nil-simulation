@@ -2,13 +2,15 @@
 
 import React, { useState } from 'react';
 
-type TabKey = 'dashboard' | 'about' | 'data' | 'synthetic' | 'howTo' | 'theory';
+type TabKey = 'dashboard' | 'about' | 'data' | 'synthetic' | 'agents' | 'feeds' | 'howTo' | 'theory';
 
 type Props = {
   renderDashboard: () => React.ReactNode;
   renderAbout: () => React.ReactNode;
   renderData: () => React.ReactNode;
   renderSynthetic: () => React.ReactNode;
+  renderAgents: () => React.ReactNode;
+  renderFeeds: () => React.ReactNode;
   renderHowTo: () => React.ReactNode;
   renderTheory: () => React.ReactNode;
 };
@@ -18,6 +20,8 @@ const tabLabels: Record<TabKey, string> = {
   about: 'About',
   data: 'Data Sources',
   synthetic: 'Synthetic Data',
+  agents: 'Agent Signals',
+  feeds: 'Live Feeds',
   howTo: 'How to Use',
   theory: 'Science',
 };
@@ -27,6 +31,8 @@ export function DashboardTabs({
   renderAbout,
   renderData,
   renderSynthetic,
+  renderAgents,
+  renderFeeds,
   renderHowTo,
   renderTheory,
 }: Props) {
@@ -71,6 +77,8 @@ export function DashboardTabs({
       {activeTab === 'about' && renderAbout()}
       {activeTab === 'data' && renderData()}
       {activeTab === 'synthetic' && renderSynthetic()}
+      {activeTab === 'agents' && renderAgents()}
+      {activeTab === 'feeds' && renderFeeds()}
       {activeTab === 'howTo' && renderHowTo()}
       {activeTab === 'theory' && renderTheory()}
     </div>

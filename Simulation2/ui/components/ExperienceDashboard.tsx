@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import Link from 'next/link';
 import { NarrativePanel } from './NarrativePanel';
 import { AgentStream } from './AgentStream';
 import { DashboardTabs } from './DashboardTabs';
@@ -60,6 +61,20 @@ type DataMode = 'simulation' | 'emulation';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:8000';
 
+type SyntheticUpdatePayload = {
+  program_id: string;
+  timestamp: number;
+  scores: {
+    psr_score: number;
+    authenticity_score: number;
+    fairness_index: number;
+    compliance_risk: number;
+    valuation_projection: number;
+    sponsor_velocity: number;
+  };
+  diff?: Record<string, number>;
+};
+
 type BehavioralComponents = {
   psr: Record<string, number>;
   authenticity: Record<string, number>;
@@ -72,6 +87,63 @@ type SyntheticScenarioSummary = {
   nil_uplift: number;
   lineup: string[];
   fan_sentiment: number[];
+};
+
+type FeedItem = {
+  id: string;
+  category: string;
+  source: string;
+  headline: string;
+  snippet: string;
+  sentiment: number;
+  impact_score: number;
+  timestamp: number;
+  tags: string[];
+  athlete_id?: string;
+  athlete_name?: string;
+};
+
+type FeedDisplayItem = FeedItem & {
+  programName: string;
+  athleteName: string;
+};
+
+type SyntheticAthleteSummary = {
+  athlete: {
+    id: string;
+    name: string;
+    position: string;
+    archetype: string;
+    class_year?: string;
+  };
+  scores: {
+    psr_score: number;
+    authenticity_score: number;
+    fairness_index: number;
+    compliance_risk: number;
+    valuation_projection: number;
+    engagement_velocity: number;
+  };
+  components: BehavioralComponents | null;
+  raw_inputs: {
+    sentiment_mean: number;
+    sentiment_volatility: number;
+    interactions_weekly: number;
+    interactions_baseline: number;
+    content_similarity: number;
+    share_rate: number;
+    retention_rate: number;
+    churn_shock: number;
+    stability_index: number;
+    schedule_volatility: number;
+  } | null;
+  raw_samples: {
+    sentiment_daily: number[];
+    interactions_daily: number[];
+    share_rate_daily: number[];
+  } | null;
+  agent_metrics: Record<string, Record<string, number>>;
+  feed_items: FeedItem[];
 };
 
 type SyntheticProgramSummary = {
@@ -106,6 +178,7 @@ type SyntheticProgramSummary = {
     churn_events: number[];
   } | null;
   scenarios: SyntheticScenarioSummary[];
+  athletes: SyntheticAthleteSummary[];
 };
 
 type SyntheticOverview = {
@@ -114,6 +187,110 @@ type SyntheticOverview = {
   metrics: Metrics;
   programs: SyntheticProgramSummary[];
 };
+
+const agentConfigs = [
+  {
+    id: 'social_media',
+    name: 'Social Media Analysis Agent',
+    description: 'Separates authentic engagement arcs from short-lived viral noise across platforms.',
+    emphasis: 'engagement_authenticity',
+    metrics: [
+      { key: 'engagement_authenticity', label: 'Engagement Authenticity' },
+      { key: 'sentiment_intensity', label: 'Sentiment Intensity' },
+      { key: 'virality_potential', label: 'Virality Potential' },
+      { key: 'platform_fit', label: 'Platform Fit' },
+      { key: 'authenticity_detection', label: 'Authenticity Detection' },
+    ],
+  },
+  {
+    id: 'athletic_performance',
+    name: 'Athletic Performance Agent',
+    description: 'Quantifies contribution within competitive context, durability, and locker-room leadership.',
+    emphasis: 'stat_efficiency',
+    metrics: [
+      { key: 'stat_efficiency', label: 'Stat Efficiency' },
+      { key: 'context_adjustment', label: 'Context Adjustment' },
+      { key: 'injury_risk', label: 'Injury Risk' },
+      { key: 'pro_projection', label: 'Pro Projection' },
+      { key: 'leadership_signal', label: 'Leadership Signal' },
+    ],
+  },
+  {
+    id: 'market_intelligence',
+    name: 'Market Intelligence Agent',
+    description: 'Maps comparable deals, sponsor appetite, and economic tailwinds for NIL offers.',
+    emphasis: 'comp_deal_alignment',
+    metrics: [
+      { key: 'comp_deal_alignment', label: 'Comparable Deal Alignment' },
+      { key: 'market_timing', label: 'Market Timing' },
+      { key: 'brand_demand', label: 'Brand Demand' },
+      { key: 'economic_context', label: 'Economic Context' },
+      { key: 'competitive_position', label: 'Competitive Position' },
+    ],
+  },
+  {
+    id: 'brand_alignment',
+    name: 'Brand Alignment Agent',
+    description: 'Evaluates values fit, narrative resonance, and activation readiness for partnership briefs.',
+    emphasis: 'values_match',
+    metrics: [
+      { key: 'values_match', label: 'Values Match' },
+      { key: 'story_resonance', label: 'Story Resonance' },
+      { key: 'activation_readiness', label: 'Activation Readiness' },
+    ],
+  },
+  {
+    id: 'psychology',
+    name: 'Psychological Profile Agent',
+    description: 'Measures fan identity strength, influence mechanics, and trust momentum.',
+    emphasis: 'fan_identity_tie',
+    metrics: [
+      { key: 'fan_identity_tie', label: 'Fan Identity Tie' },
+      { key: 'influence_score', label: 'Influence Score' },
+      { key: 'trust_velocity', label: 'Trust Velocity' },
+    ],
+  },
+  {
+    id: 'risk_compliance',
+    name: 'Risk & Compliance Agent',
+    description: 'Monitors disclosure cadence, policy changes, and potential audit exposure.',
+    emphasis: 'regulatory_score',
+    metrics: [
+      { key: 'regulatory_score', label: 'Regulatory Score' },
+      { key: 'disclosure_health', label: 'Disclosure Health' },
+      { key: 'audit_risk', label: 'Audit Risk' },
+    ],
+  },
+  {
+    id: 'ethics',
+    name: 'Ethics Oversight Agent',
+    description: 'Guards against bias drift, monitors fairness, and signals when interventions are needed.',
+    emphasis: 'ethics_confidence',
+    metrics: [
+      { key: 'bias_index', label: 'Bias Index' },
+      { key: 'fairness_drift', label: 'Fairness Drift' },
+      { key: 'ethics_confidence', label: 'Ethics Confidence' },
+    ],
+  },
+] as const;
+
+const feedSections = [
+  {
+    title: 'Social & Community',
+    description: 'Fan buzz, creator clips, and community touchpoints influencing parasocial strength.',
+    categories: ['social', 'community'],
+  },
+  {
+    title: 'News & Market Signals',
+    description: 'Media narratives, collective chatter, and agent-triggered signals shaping demand.',
+    categories: ['news', 'signal'],
+  },
+  {
+    title: 'Performance & Compliance',
+    description: 'On-court analytics and governance updates feeding performance and compliance agents.',
+    categories: ['performance', 'compliance'],
+  },
+] as const;
 
 const containerStyle: React.CSSProperties = {
   minHeight: '100vh',
@@ -149,6 +326,21 @@ function MetricCard({ label, value }: { label: string; value: string }) {
   );
 }
 
+function formatTimeAgo(timestamp: number): string {
+  const now = Date.now() / 1000;
+  const diff = Math.max(1, now - timestamp);
+  if (diff < 60) {
+    return `${Math.floor(diff)}s ago`;
+  }
+  if (diff < 3600) {
+    return `${Math.floor(diff / 60)}m ago`;
+  }
+  if (diff < 86400) {
+    return `${Math.floor(diff / 3600)}h ago`;
+  }
+  return `${Math.floor(diff / 86400)}d ago`;
+}
+
 export function ExperienceDashboard({ programs, scenarios, metrics, initialMode = 'simulation' }: Props) {
   const [persona, setPersona] = useState<PersonaKey>('athletic_director');
   const [dataMode, setDataMode] = useState<DataMode>(initialMode);
@@ -161,6 +353,8 @@ export function ExperienceDashboard({ programs, scenarios, metrics, initialMode 
   const [selectedProgram, setSelectedProgram] = useState<string>(programs[0]?.id ?? '');
   const hasFetchedInitialSynthetic = useRef(false);
   const personaConfig = personas[persona];
+  const [agentOverlays, setAgentOverlays] = useState<Record<string, { value: number; expiresAt: number }>>({});
+  const [agentHighlights, setAgentHighlights] = useState<Record<string, { athleteId: string; metricKey: string; timestamp: number }>>({});
 
   useEffect(() => {
     if (!programData.length) {
@@ -265,6 +459,145 @@ export function ExperienceDashboard({ programs, scenarios, metrics, initialMode 
       )),
     [programData]
   );
+
+  const agentEntriesByAgent = useMemo(() => {
+    if (!syntheticOverview) return {} as Record<string, { athleteId: string; programName: string; athlete: SyntheticAthleteSummary['athlete']; metrics: Record<string, number> }[]>;
+    const map: Record<string, { athleteId: string; programName: string; athlete: SyntheticAthleteSummary['athlete']; metrics: Record<string, number> }[]> = {};
+    syntheticOverview.programs.forEach(programSummary => {
+      (programSummary.athletes ?? []).forEach(athleteSummary => {
+        const agentMetrics = athleteSummary.agent_metrics ?? {};
+        Object.entries(agentMetrics).forEach(([agentId, metrics]) => {
+          if (!map[agentId]) {
+            map[agentId] = [];
+          }
+          map[agentId].push({
+            athleteId: athleteSummary.athlete.id,
+            programName: programSummary.program.name,
+            athlete: athleteSummary.athlete,
+            metrics: { ...metrics },
+          });
+        });
+      });
+    });
+    return map;
+  }, [syntheticOverview]);
+
+  const feedBuckets = useMemo(() => {
+    const buckets: Record<string, FeedDisplayItem[]> = {
+      social: [],
+      news: [],
+      performance: [],
+      community: [],
+      compliance: [],
+      signal: [],
+      other: [],
+    };
+    if (!syntheticOverview) {
+      return buckets;
+    }
+    syntheticOverview.programs.forEach(programSummary => {
+      (programSummary.athletes ?? []).forEach(athleteSummary => {
+        const athleteName = athleteSummary.athlete.name;
+        const programName = programSummary.program.name;
+        (athleteSummary.feed_items ?? []).forEach(item => {
+          const category = buckets[item.category] ? item.category : 'other';
+          buckets[category].push({
+            ...item,
+            athleteName: item.athlete_name ?? athleteName,
+            programName,
+          });
+        });
+      });
+    });
+    Object.values(buckets).forEach(list => list.sort((a, b) => b.timestamp - a.timestamp));
+    return buckets;
+  }, [syntheticOverview]);
+
+  const highlightAthleteIds = useMemo(() => {
+    const ids = new Set<string>();
+    Object.values(agentHighlights).forEach(value => {
+      if (value?.athleteId) {
+        ids.add(value.athleteId);
+      }
+    });
+    return ids;
+  }, [agentHighlights]);
+
+  useEffect(() => {
+    setAgentOverlays({});
+    setAgentHighlights({});
+  }, [dataMode, syntheticOverview?.seed]);
+
+  useEffect(() => {
+    const cleanupInterval = window.setInterval(() => {
+      const now = Date.now();
+      setAgentOverlays(prev => {
+        let mutated = false;
+        const next: typeof prev = {};
+        for (const [key, value] of Object.entries(prev)) {
+          if (value.expiresAt > now) {
+            next[key] = value;
+          } else {
+            mutated = true;
+          }
+        }
+        return mutated ? next : prev;
+      });
+      setAgentHighlights(prev => {
+        let mutated = false;
+        const next: typeof prev = {};
+        for (const [agentId, value] of Object.entries(prev)) {
+          if (now - value.timestamp < 8000) {
+            next[agentId] = value;
+          } else {
+            mutated = true;
+          }
+        }
+        return mutated ? next : prev;
+      });
+    }, 5000);
+    return () => window.clearInterval(cleanupInterval);
+  }, []);
+
+  useEffect(() => {
+    if (dataMode !== 'emulation' || !syntheticOverview) {
+      return;
+    }
+    const updateInterval = window.setInterval(() => {
+      const playableAgents = Object.entries(agentEntriesByAgent).filter(([, entries]) => entries && entries.length > 0);
+      if (!playableAgents.length) {
+        return;
+      }
+      const [agentId, entries] = playableAgents[Math.floor(Math.random() * playableAgents.length)];
+      const config = agentConfigs.find(cfg => cfg.id === agentId);
+      if (!config || !entries?.length) {
+        return;
+      }
+      const chosenEntry = entries[Math.floor(Math.random() * entries.length)];
+      if (!chosenEntry) {
+        return;
+      }
+      const metricOptions = config.metrics;
+      if (!metricOptions.length) {
+        return;
+      }
+      const chosenMetric = metricOptions[Math.floor(Math.random() * metricOptions.length)];
+      const baseValue = chosenEntry.metrics[chosenMetric.key] ?? 0;
+      const delta = (Math.random() - 0.5) * 0.08;
+      const newValue = Math.min(1, Math.max(0, baseValue + delta));
+      const overlayKey = `${agentId}::${chosenEntry.athleteId}::${chosenMetric.key}`;
+      const now = Date.now();
+      setAgentOverlays(prev => ({
+        ...prev,
+        [overlayKey]: { value: newValue, expiresAt: now + 20000 },
+      }));
+      setAgentHighlights(prev => ({
+        ...prev,
+        [agentId]: { athleteId: chosenEntry.athleteId, metricKey: chosenMetric.key, timestamp: now },
+      }));
+    }, 14000 + Math.random() * 4000);
+    return () => window.clearInterval(updateInterval);
+  }, [dataMode, agentEntriesByAgent, syntheticOverview]);
 
   const dashboardContent = (
     <>
@@ -621,6 +954,7 @@ export function ExperienceDashboard({ programs, scenarios, metrics, initialMode 
                 raw_inputs: rawInputs,
                 raw_samples: rawSamples,
                 scenarios: syntheticScenarios,
+                athletes: syntheticAthletes = [],
               } = summary;
               return (
                 <article key={program.id} style={cardStyle}>
@@ -722,6 +1056,44 @@ export function ExperienceDashboard({ programs, scenarios, metrics, initialMode 
                       </ul>
                     </div>
                   )}
+                  {syntheticAthletes.length > 0 && (
+                    <div style={{ marginTop: '.75rem', color: '#9aa7d1', fontSize: '.82rem', display: 'grid', gap: '.45rem' }}>
+                      <p style={{ color: '#e8ecff', fontSize: '.9rem', marginBottom: '.25rem' }}>Individual Signals</p>
+                      {syntheticAthletes.map(athleteSummary => (
+                        <div
+                          key={athleteSummary.athlete.id}
+                          style={{
+                            borderRadius: '12px',
+                            border: '1px solid rgba(56, 189, 248, 0.15)',
+                            background: 'rgba(10, 20, 45, 0.7)',
+                            padding: '.65rem .75rem',
+                            display: 'grid',
+                            gap: '.25rem',
+                          }}
+                        >
+                          <p style={{ margin: 0, color: '#e8ecff', fontWeight: 600 }}>
+                            {athleteSummary.athlete.name} — {athleteSummary.athlete.position}
+                            {athleteSummary.athlete.archetype ? ` · ${athleteSummary.athlete.archetype}` : ''}
+                          </p>
+                          <p style={{ margin: 0 }}>
+                            PSR {athleteSummary.scores.psr_score.toFixed(2)} · Authenticity {athleteSummary.scores.authenticity_score.toFixed(2)} · Engagement{' '}
+                            {athleteSummary.scores.engagement_velocity.toFixed(2)}
+                          </p>
+                          <p style={{ margin: 0 }}>
+                            Fairness {(athleteSummary.scores.fairness_index * 100).toFixed(1)}% · Compliance{' '}
+                            {(athleteSummary.scores.compliance_risk * 100).toFixed(1)}% · Valuation ${athleteSummary.scores.valuation_projection.toLocaleString()}
+                          </p>
+                          {athleteSummary.raw_inputs && (
+                            <p style={{ margin: 0 }}>
+                              Sentiment {athleteSummary.raw_inputs.sentiment_mean.toFixed(2)} · Weekly interactions{' '}
+                              {Math.round(athleteSummary.raw_inputs.interactions_weekly).toLocaleString()} · Share rate{' '}
+                              {(athleteSummary.raw_inputs.share_rate * 100).toFixed(1)}%
+                            </p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </article>
               );
             })}
@@ -734,6 +1106,336 @@ export function ExperienceDashboard({ programs, scenarios, metrics, initialMode 
               </p>
             </article>
           )}
+    </section>
+  );
+
+  const agentsContent = (
+    <section style={{ ...sectionStyle, display: 'grid', gap: '1.4rem' }}>
+      <style>{`
+        @keyframes agentPulse {
+          0% { transform: scale(0.9); opacity: 0.4; }
+          50% { transform: scale(1.25); opacity: 1; }
+          100% { transform: scale(0.9); opacity: 0.4; }
+        }
+      `}</style>
+      <h2 style={{ fontSize: '1.75rem', fontWeight: 600 }}>Specialized Agent Signals</h2>
+      <p style={{ color: '#9aa7d1', lineHeight: 1.7 }}>
+        Each VALORE agent emits synthetic telemetry for the current roster—spanning social graphs, performance context, market appetite,
+        branding fit, psychology, compliance posture, and ethics guardrails. Switch to Emulation mode to watch these scores evolve in
+        semi-real time.
+      </p>
+      {dataMode !== 'emulation' || !syntheticOverview ? (
+        <article style={cardStyle}>
+          <p style={{ color: '#9aa7d1', lineHeight: 1.6 }}>
+            Agent views require Emulation mode. Toggle the data mode above to load synthetic streams.
+          </p>
+        </article>
+      ) : (
+        <div
+          style={{
+            display: 'grid',
+            gap: '1.2rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          }}
+        >
+          {agentConfigs.map(config => {
+            const now = Date.now();
+            const rawEntries = agentEntriesByAgent[config.id] ?? [];
+            const enrichedEntries = rawEntries.map(entry => {
+              const metricsWithOverlay: Record<string, number> = { ...entry.metrics };
+              config.metrics.forEach(metric => {
+                const overlayKey = `${config.id}::${entry.athleteId}::${metric.key}`;
+                const overlay = agentOverlays[overlayKey];
+                if (overlay && overlay.expiresAt > now) {
+                  metricsWithOverlay[metric.key] = overlay.value;
+                }
+              });
+              return { ...entry, metrics: metricsWithOverlay };
+            });
+            const ranked = enrichedEntries
+              .filter(entry => Object.keys(entry.metrics).length > 0)
+              .sort((a, b) => (b.metrics[config.emphasis] ?? 0) - (a.metrics[config.emphasis] ?? 0))
+              .slice(0, 4);
+
+            const activeHighlight = agentHighlights[config.id];
+            const highlightActive = activeHighlight && now - activeHighlight.timestamp < 6000;
+
+            return (
+              <article
+                key={config.id}
+                style={{
+                  ...cardStyle,
+                  border: highlightActive ? '1px solid rgba(34, 197, 94, 0.55)' : cardStyle.border,
+                  boxShadow: highlightActive
+                    ? '0 0 28px rgba(34, 197, 94, 0.18)'
+                    : '0 20px 60px rgba(2, 6, 23, 0.45)',
+                  background: highlightActive ? 'rgba(12, 32, 24, 0.88)' : cardStyle.background,
+                  transition: 'border 0.4s ease, box-shadow 0.4s ease, background 0.4s ease',
+                  position: 'relative',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '.6rem' }}>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>{config.name}</h3>
+                  {highlightActive && (
+                    <span
+                      style={{
+                        width: 12,
+                        height: 12,
+                        borderRadius: '50%',
+                        background: '#34d399',
+                        boxShadow: '0 0 8px rgba(52, 211, 153, 0.6)',
+                        animation: 'agentPulse 1.2s ease-in-out infinite',
+                      }}
+                    />
+                  )}
+                </div>
+                <p style={{ color: '#9aa7d1', fontSize: '.85rem', lineHeight: 1.6 }}>{config.description}</p>
+                {ranked.length === 0 ? (
+                  <p style={{ color: '#9aa7d1', fontSize: '.85rem' }}>No athlete samples yet. Trigger more emulation updates to populate this agent.</p>
+                ) : (
+                  <div style={{ display: 'grid', gap: '.55rem' }}>
+                    {ranked.map(entry => {
+                      const isHighlighted = highlightActive && activeHighlight?.athleteId === entry.athleteId;
+                      return (
+                        <div
+                          key={entry.athleteId}
+                          style={{
+                            position: 'relative',
+                            border: isHighlighted ? '2px solid rgba(34, 197, 94, 0.65)' : '1px solid rgba(89, 131, 255, 0.18)',
+                            borderRadius: '14px',
+                            background: isHighlighted
+                              ? 'linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(14, 70, 40, 0.55))'
+                              : 'rgba(5, 10, 30, 0.8)',
+                            padding: '.8rem .95rem',
+                            transition: 'background 0.3s ease, border 0.3s ease, transform 0.3s ease',
+                            transform: isHighlighted ? 'scale(1.02)' : 'scale(1)',
+                            boxShadow: isHighlighted ? '0 0 26px rgba(34, 197, 94, 0.25)' : 'none',
+                          }}
+                        >
+                          {isHighlighted && (
+                            <span
+                              style={{
+                                position: 'absolute',
+                                top: 12,
+                                right: 14,
+                                width: 14,
+                                height: 14,
+                                borderRadius: '50%',
+                                background: '#34d399',
+                                boxShadow: '0 0 10px rgba(52, 211, 153, 0.7)',
+                                animation: 'agentPulse 1.5s ease-in-out infinite',
+                              }}
+                            />
+                          )}
+                          <p style={{ margin: 0, color: '#e8ecff', fontWeight: 600, fontSize: '.9rem' }}>
+                            {entry.athlete.name} — {entry.athlete.position} · {entry.programName}
+                          </p>
+                          <p
+                            style={{
+                              margin: '.2rem 0',
+                              color: isHighlighted ? '#bbf7d0' : '#88b4ff',
+                              fontSize: '.82rem',
+                              fontWeight: isHighlighted ? 600 : 500,
+                            }}
+                          >
+                            {config.metrics.find(metric => metric.key === config.emphasis)?.label}:{' '}
+                            {(entry.metrics[config.emphasis] ?? 0).toFixed(2)}
+                          </p>
+                          <ul style={{ margin: 0, paddingLeft: '1.1rem', color: '#9aa7d1', fontSize: '.8rem', display: 'grid', gap: '.15rem' }}>
+                            {config.metrics
+                              .filter(metric => metric.key !== config.emphasis)
+                              .map(metric => {
+                                const value = entry.metrics[metric.key] ?? 0;
+                                return (
+                                  <li key={metric.key}>
+                                    <span
+                                      style={{
+                                        color: isHighlighted ? '#d1fae5' : '#9aa7d1',
+                                        fontWeight: isHighlighted ? 600 : 400,
+                                      }}
+                                    >
+                                      {metric.label}: {value.toFixed(2)}
+                                    </span>
+                                  </li>
+                                );
+                              })}
+                          </ul>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      )}
+    </section>
+  );
+
+  const feedsContent = (
+    <section style={{ ...sectionStyle, display: 'grid', gap: '1.4rem' }}>
+      <style>{`
+        @keyframes agentPulse {
+          0% { transform: scale(0.9); opacity: 0.4; }
+          50% { transform: scale(1.25); opacity: 1; }
+          100% { transform: scale(0.9); opacity: 0.4; }
+        }
+      `}</style>
+      <h2 style={{ fontSize: '1.75rem', fontWeight: 600 }}>Live Intelligence Feeds</h2>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '.6rem',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          background: 'rgba(25, 45, 95, 0.45)',
+          border: '1px solid rgba(89, 131, 255, 0.35)',
+          borderRadius: '12px',
+          padding: '.65rem .9rem',
+        }}
+      >
+        <span style={{ color: '#9aa7d1', fontSize: '.85rem' }}>
+          Need the full mapping of Live Feed signals to agent calculus?
+        </span>
+        <Link
+          href="/feeds-intelligence"
+          prefetch={false}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '.35rem',
+            borderRadius: '999px',
+            padding: '.35rem .85rem',
+            border: '1px solid rgba(89, 131, 255, 0.55)',
+            background: 'linear-gradient(135deg, rgba(89, 131, 255, 0.25), rgba(25, 211, 255, 0.2))',
+            color: '#e8ecff',
+            fontSize: '.8rem',
+            fontWeight: 600,
+            textDecoration: 'none',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          View Explainer →
+        </Link>
+      </div>
+      <p style={{ color: '#9aa7d1', lineHeight: 1.7 }}>
+        Synthetic social, news, performance, and compliance signals illustrate the raw evidence streams each agent ingests. Entries update
+        alongside agent pulses to mirror how VALORE synthesizes incoming NIL telemetry.
+      </p>
+      {dataMode !== 'emulation' || !syntheticOverview ? (
+        <article style={cardStyle}>
+          <p style={{ color: '#9aa7d1', lineHeight: 1.6 }}>
+            Switch to Emulation mode to animate the live feeds and watch agent highlights sync with new evidence drops.
+          </p>
+        </article>
+      ) : (
+        <div
+          style={{
+            display: 'grid',
+            gap: '1.25rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          }}
+        >
+          {feedSections.map(section => {
+            const items = section.categories.flatMap(category => feedBuckets[category] ?? []);
+            const topItems = items.slice(0, 6);
+            return (
+              <article key={section.title} style={{ ...cardStyle, gap: '.8rem' }}>
+                <div>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>{section.title}</h3>
+                  <p style={{ color: '#9aa7d1', fontSize: '.85rem', lineHeight: 1.6 }}>{section.description}</p>
+                </div>
+                {topItems.length === 0 ? (
+                  <p style={{ color: '#9aa7d1', fontSize: '.85rem' }}>No recent entries. Trigger more emulation updates to populate this stream.</p>
+                ) : (
+                  <div style={{ display: 'grid', gap: '.75rem' }}>
+                    {topItems.map(item => {
+                      const highlighted = item.athlete_id ? highlightAthleteIds.has(item.athlete_id) : false;
+                      return (
+                        <div
+                          key={item.id}
+                          style={{
+                            borderRadius: '14px',
+                            border: highlighted ? '1px solid rgba(34, 197, 94, 0.55)' : '1px solid rgba(90, 110, 160, 0.25)',
+                            background: highlighted
+                              ? 'linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(12, 32, 24, 0.6))'
+                              : 'rgba(5, 10, 35, 0.85)',
+                            padding: '.85rem 1rem',
+                            boxShadow: highlighted ? '0 0 24px rgba(34, 197, 94, 0.2)' : 'none',
+                            transition: 'background 0.3s ease, border 0.3s ease',
+                            position: 'relative',
+                          }}
+                        >
+                          {highlighted && (
+                            <span
+                              style={{
+                                position: 'absolute',
+                                top: 12,
+                                right: 12,
+                                width: 12,
+                                height: 12,
+                                borderRadius: '50%',
+                                background: '#34d399',
+                                boxShadow: '0 0 10px rgba(52, 211, 153, 0.6)',
+                                animation: 'agentPulse 1.4s ease-in-out infinite',
+                              }}
+                            />
+                          )}
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '.5rem', marginBottom: '.35rem' }}>
+                            <Link
+                              href="/feeds-intelligence"
+                              prefetch={false}
+                              title="See how agent calculus converts Live Feed signals"
+                              style={{
+                                fontSize: '.7rem',
+                                textTransform: 'uppercase',
+                                letterSpacing: '.08em',
+                                padding: '.15rem .45rem',
+                                borderRadius: '999px',
+                                background: 'rgba(89, 131, 255, 0.18)',
+                                color: '#c7d2fe',
+                                textDecoration: 'none',
+                              }}
+                            >
+                              {item.source}
+                            </Link>
+                            <span style={{ color: '#9aa7d1', fontSize: '.75rem' }}>{formatTimeAgo(item.timestamp)}</span>
+                          </div>
+                          <h4 style={{ margin: 0, fontSize: '.95rem', color: highlighted ? '#f0fdf4' : '#e8ecff' }}>{item.headline}</h4>
+                          <p style={{ margin: '.35rem 0', color: '#9aa7d1', fontSize: '.85rem', lineHeight: 1.5 }}>{item.snippet}</p>
+                          <p style={{ margin: 0, color: '#9aa7d1', fontSize: '.8rem' }}>
+                            {item.athleteName} · {item.programName}
+                          </p>
+                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '.4rem', marginTop: '.45rem' }}>
+                            <span style={{ color: '#9aa7d1', fontSize: '.75rem' }}>Sentiment {(item.sentiment * 100).toFixed(0)}%</span>
+                            <span style={{ color: '#9aa7d1', fontSize: '.75rem' }}>Impact {(item.impact_score * 100).toFixed(0)}%</span>
+                            {item.tags.slice(0, 3).map(tag => (
+                              <span
+                                key={tag}
+                                style={{
+                                  fontSize: '.7rem',
+                                  color: '#7dd3fc',
+                                  background: 'rgba(125, 211, 252, 0.15)',
+                                  padding: '.12rem .4rem',
+                                  borderRadius: '999px',
+                                }}
+                              >
+                                #{tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      )}
     </section>
   );
 
@@ -963,6 +1665,8 @@ export function ExperienceDashboard({ programs, scenarios, metrics, initialMode 
           renderAbout={() => aboutContent}
           renderData={() => dataContent}
           renderSynthetic={() => syntheticContent}
+          renderAgents={() => agentsContent}
+          renderFeeds={() => feedsContent}
           renderHowTo={() => howToContent}
           renderTheory={() => theoryContent}
         />

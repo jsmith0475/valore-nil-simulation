@@ -21,6 +21,7 @@
 - [x] Generate compliance and fairness scenarios (audits, parity metrics, risk flags).
 - [x] Compose multi-agent evidence packets with evolving timestamps and consensus outcomes.
 - [x] Generate raw synthetic signals (sentiment, interactions, retention, share rates) that feed PSR/auth computations.
+- [x] Extend generator with athlete-level raw signals, valuations, and behavioral metrics for individual updates.
 - [ ] Add reproducible seeding and scenario presets (e.g., “Tournament Surge”, “Compliance Audit”).
 
 ### 3. Backend Integration
@@ -29,23 +30,32 @@
 - [x] Enhance WebSocket stream to publish synthetic evidence packets on an interval loop.
 - [ ] Instrument logging/metrics to validate generator outputs and track run metadata.
 - [ ] Provide test fixtures or scripts for snapshot comparisons of synthetic runs.
+- [ ] Persist agent negotiation transcripts and expose replay/export endpoints for audit.
 
 ### 4. Frontend Support
 - [x] Introduce UI mode selector (Simulation vs Emulation) with descriptive copy.
 - [x] Refresh landing callouts and tooltips to clarify synthetic nature of data.
 - [x] Adjust dashboards to react to live updates (e.g., highlight narrative prompts triggered by synthetic events).
 - [x] Add Synthetic Data tab exposing behavioral snapshots and scenario summaries.
+- [x] Build Agent Signals tab surfacing athlete-level metrics for each specialized agent stream.
+- [x] Add Live Feeds tab visualizing synthetic social/news/performance/compliance evidence streams.
 - [ ] Optional: add user controls for scenario intensity or preset selection.
+- [ ] Create persona-driven dashboard presets (Tamika, Richard, Sharon, Modus) with tailored KPI groupings.
+- [ ] Add Compliance Ops view with disclosure tracking and RAG citation breadcrumbs.
+- [ ] Add Business Outlook view summarizing POC revenue projections, adoption pipeline, and football readiness.
 
 ### 5. Validation & Testing
 - [ ] Create automated/unit tests for generator output ranges and schema compliance.
 - [ ] Run manual stress tests covering edge cases (extreme parasocial spikes, authenticity dips, compliance violations).
 - [ ] Document a checklist for demo rehearsal (seed values, sequences, expected behaviors).
+- [ ] Define calibration plan comparing synthetic metrics against historical NIL benchmarks; document coefficient override process.
 
 ### 6. Documentation & Ops
 - [ ] Draft `Synthetic Emulation` section in README/architecture docs explaining design and usage.
 - [ ] Provide runbooks for enabling/disabling synthetic mode and seeding reproducible demos.
 - [ ] Capture sample outputs and narrative transcripts for stakeholder review.
+- [ ] Publish data onboarding roadmap (real social feeds, NIL deal data, compliance disclosures) and privacy/consent considerations.
+- [ ] Document ethics remediation playbooks triggered by EOA alerts.
 
 ## Dependencies & Considerations
 - Align generator outputs with theoretical frameworks in `Background/multi-agentic NIL.md` and `Background/paper.md`.

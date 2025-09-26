@@ -1,5 +1,6 @@
 import asyncio
 from fastapi import FastAPI, WebSocket
+from starlette.websockets import WebSocketDisconnect, WebSocketState
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import get_settings
@@ -56,5 +57,8 @@ async def agents_ws(websocket: WebSocket):
         async for packet in agent_negotiation_stream(context):
             await websocket.send_json(packet)
             await asyncio.sleep(0.02)
+    except WebSocketDisconnect:
+        pass
     finally:
-        await websocket.close()
+        if websocket.application_state != WebSocketState.DISCONNECTED:
+            await websocket.close()

@@ -7,6 +7,7 @@ from app.schemas.program import Program
 from app.schemas.scenario import Scenario
 from app.services import mock_data
 from app.synthetic import get_behavioral_snapshot, get_metrics as synthetic_metrics
+from app.synthetic import list_athletes as synthetic_athletes
 from app.synthetic import list_programs as synthetic_programs
 from app.synthetic import list_scenarios as synthetic_scenarios
 from app.synthetic import is_enabled
@@ -42,5 +43,7 @@ def get_behavioral(program_id: str, mode_override: Optional[str] = None):
     return None
 
 
-def list_athletes(program_id: Optional[str] = None):
+def list_athletes(program_id: Optional[str] = None, mode_override: Optional[str] = None):
+    if using_synthetic_mode(mode_override):
+        return synthetic_athletes(program_id)
     return mock_data.list_athletes(program_id)
